@@ -4,9 +4,11 @@
 </script>
 
 <style lang="scss">
+    $collapse-point: 580px;
+
     header {
         --header-height: 8rem;
-        height: var(--header-height);
+        min-height: var(--header-height);
         display: grid;
     }
 
@@ -26,6 +28,10 @@
 
             align-self: center;
             justify-self: start;
+
+            @media screen and (max-width: $collapse-point) {
+                margin-block: calc(var(--header-height) / 5);
+            }
         }
 
         .tabs {
@@ -35,7 +41,25 @@
             display: flex;
             justify-content: center;
             align-items: end;
-            gap: 2.5rem;
+            gap: min(2.5rem, 2vw);
+
+            @media screen and (max-width: $collapse-point) {
+                flex-direction: column;
+                grid-row: 2;
+                display: grid;
+                grid-auto-flow: row;
+                place-items: center;
+                gap: 0;
+
+                & > :global(*) {
+                    text-align: center;
+                    width: 100%;
+
+                    &:not(:first-child) {
+                        border-radius: 0;
+                    }
+                }
+            }
         }
     }
 
