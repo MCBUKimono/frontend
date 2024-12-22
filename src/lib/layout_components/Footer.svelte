@@ -7,11 +7,8 @@
         grid-auto-columns: 1fr;
         gap: 3em;
 
-        margin-top: 2em;
         --r: min(1em, 2.5vw);
         padding: calc(var(--r) * 3) calc(var(--r) * 2) calc(var(--r) * 5);
-        background: var(--theme-color);
-        border-top: 1px solid var(--text-color);
 
         @media screen and (max-width: 45em) {
             grid-auto-flow: row;

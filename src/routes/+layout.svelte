@@ -5,8 +5,15 @@
 </script>
 
 <style>
+    :global(body) {
+        background: var(--light-bg-color);
+    }
+
     main {
-        padding: 0.4em;
+        --r: min(1em, 2.5vw);
+        background: var(--theme-color);
+        border-radius: calc(var(--r) * 2.5);
+        padding: calc(var(--r) * 1.25);
     }
 </style>
 
