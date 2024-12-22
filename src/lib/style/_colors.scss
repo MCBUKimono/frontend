@@ -1,0 +1,31 @@
+@mixin colors {
+    :root {
+        --text-color: hsl(0, 0%, 20%);
+        --theme-color: hsl(0, 0%, 100%);
+
+        color-scheme: light;
+    }
+
+    html {
+        background-color: var(--theme-color);
+        color: var(--text-color);
+    }
+
+    /*a {
+        &:link {
+            color: color-mix(in oklch, blue 70%, var(--text-color));
+        }
+
+        &:visited {
+            color: color-mix(in oklch, purple 70%, var(--text-color));
+        }
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        &:active {
+            text-decoration: underline;
+        }
+    }*/
+}
