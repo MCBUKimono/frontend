@@ -1,23 +1,26 @@
 @mixin colors {
     :root {
         --text-color: hsl(0, 0%, 20%);
-        --theme-color: hsl(0, 0%, 100%);
+        --theme-color: #F4BAA3;
+        --brand-color: #7A1616;
+        --primary-color: #F19898;
+        --accent-color: #A1E6F8;
+        --light-bg-color: #FFDCCE;
 
         color-scheme: light;
     }
 
     html {
-        background-color: var(--theme-color);
         color: var(--text-color);
     }
 
-    /*a {
+    a {
         &:link {
-            color: color-mix(in oklch, blue 70%, var(--text-color));
+            color: color-mix(in oklch, var(--brand-color) 70%, var(--text-color));
         }
 
         &:visited {
-            color: color-mix(in oklch, purple 70%, var(--text-color));
+            color: color-mix(in oklch, var(--brand-color) 30%, purple);
         }
 
         &:hover {
@@ -27,5 +30,5 @@
         &:active {
             text-decoration: underline;
         }
-    }*/
+    }
 }
