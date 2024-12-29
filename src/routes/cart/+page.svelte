@@ -179,9 +179,9 @@
             <span class="item-name">{item.product.name}</span>
             <div class="item-quantity">
                 <select bind:value={item.quantity}>
-                    {#each Array(10)
+                    {#each Array(11)
                         .fill(0)
-                        .map((_, i) => i + 1) as qty}
+                        .map((_, i) => i) as qty}
                         <option value={qty}>{qty}</option>
                     {/each}
                 </select>
