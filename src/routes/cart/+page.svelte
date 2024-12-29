@@ -166,17 +166,6 @@
 .checkout-button {
     margin: 1rem;
     padding: 0.75rem 2rem; /* Daha geniş buton */
-    font-size: 1rem;
-    color: var(--brand-color);
-    background-color: #75c2d6;
-    border: none;
-    border-radius: 25px; /* Butonu daha yuvarlak hale getirme */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.checkout-button:hover {
-    background-color: #5aa6ba;
 }
 
 </style>
