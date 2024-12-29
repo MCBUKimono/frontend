@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+    import type { Product } from "$lib/product";
+
     import ProductCard from "$lib/components/ProductCard.svelte";
     import SearchIcon from "virtual:icons/material-symbols/search";
     import DoubleLeftIcon from "virtual:icons/icon-park-outline/double-left";
@@ -79,7 +81,7 @@
             discountPer1000: 0,
             taxPer1000: 200
         }
-    ];
+    ] satisfies Product[];
 </script>
 
 <style>

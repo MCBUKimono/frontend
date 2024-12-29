@@ -1,38 +1,111 @@
 <script lang="ts">
+    import { type Product, productFinalPriceCents } from "$lib/product";
+    import { priceFormat } from "$lib/formats";
+
     interface CartItem {
-        id: number;
-        name: string;
-        price: number;
+        product: Product;
         quantity: number;
     }
 
-    let cartItems: CartItem[] = [
-        { id: 1, name: "Ad", price: 1500, quantity: 1 },
-        { id: 2, name: "Ad", price: 1500, quantity: 1 },
-        { id: 3, name: "Ad", price: 1500, quantity: 1 },
-        { id: 4, name: "Ad", price: 1500, quantity: 1 }
-    ];
+    const products = [
+        {
+            id: 1,
+            name: "iPhone 16",
+            priceCents: 250000,
+            images: ["https://placehold.co/200x200"],
+            description: "En yeni teknolojiyle donatılmış iPhone modeli.",
+            brand: "Apple",
+            category: "Cep Telefonları",
+            averageScoreOutOf100: 95,
+            discountPer1000: 0,
+            taxPer1000: 200
+        },
+        {
+            id: 2,
+            name: "Samsung Galaxy",
+            priceCents: 220000,
+            images: ["https://placehold.co/200x200"],
+            description: "Yüksek performans ve geniş ekran deneyimi.",
+            brand: "Samsung",
+            category: "Cep Telefonları",
+            averageScoreOutOf100: 90,
+            discountPer1000: 0,
+            taxPer1000: 200
+        },
+        {
+            id: 3,
+            name: "Xiaomi Redmi",
+            priceCents: 200000,
+            images: ["https://placehold.co/200x200"],
+            description: "Uygun fiyatlı ve yüksek özellikli akıllı telefon.",
+            brand: "Xiaomi",
+            category: "Cep Telefonları",
+            averageScoreOutOf100: 88,
+            discountPer1000: 0,
+            taxPer1000: 200
+        },
+        {
+            id: 4,
+            name: "OnePlus Nord",
+            priceCents: 210000,
+            images: ["https://placehold.co/200x200"],
+            description: "Amiral gemisi özelliklerini uygun fiyata sunar.",
+            brand: "OnePlus",
+            category: "Cep Telefonları",
+            averageScoreOutOf100: 89,
+            discountPer1000: 0,
+            taxPer1000: 200
+        },
+        {
+            id: 5,
+            name: "Google Pixel",
+            priceCents: 230000,
+            images: ["https://placehold.co/200x200"],
+            description: "Yüksek kaliteli kamera ve akıcı Android deneyimi.",
+            brand: "Google",
+            category: "Cep Telefonları",
+            averageScoreOutOf100: 92,
+            discountPer1000: 0,
+            taxPer1000: 200
+        },
+        {
+            id: 6,
+            name: "Huawei Mate",
+            priceCents: 240000,
+            images: ["https://placehold.co/200x200"],
+            description: "Performans ve tasarımda mükemmel denge.",
+            brand: "Huawei",
+            category: "Cep Telefonları",
+            averageScoreOutOf100: 91,
+            discountPer1000: 0,
+            taxPer1000: 200
+        }
+    ] satisfies Product[];
 
-    function updateQuantity(itemId: number, event: Event) {
-        const target = event.target as HTMLSelectElement; // `event.target` türü burada belirtiliyor
-        const newQuantity = parseInt(target.value, 10);
-        cartItems = cartItems.map((item) =>
-            item.id === itemId ? { ...item, quantity: newQuantity } : item
-        );
+    let cartItems: CartItem[] = $state([]);
+    for (const product of products) {
+        cartItems.push({
+            product: product,
+            quantity: 1,
+        })
     }
 
-    function calculateTotal(): number {
-        return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-    }
+    let total: number = $derived.by(() => {
+        let total = 0;
+        for (const cartItem of cartItems)
+            total += cartItem.quantity * productFinalPriceCents(cartItem.product);
+        return total;
+    });
+
+    let formattedTotal: string = $derived(priceFormat.format(total / 100));
 </script>
 
 <style>
-
-    .cart-container {
+.cart-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-   margin: 0.5rem auto;
+    margin: 0.5rem auto;
     padding: 0.1rem;
     background-color: var(--lighter-bg-color);
     border-radius: 45px;
@@ -57,32 +130,33 @@
     width: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-    .cart-item img {
-        width: 90px;
-        height: 90px;
-        border-radius: 20%;
-        background-color: #ddd;
-    }
 
-    .cart-item-name {
-        font-size: 1.2rem;
-        color: #822b2b;
-        margin-left: 1rem;
-    }
+.cart-item img {
+    width: 90px;
+    height: 90px;
+    border-radius: 20%;
+    background-color: #ddd;
+}
 
-    .cart-item-quantity {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        width: 50px;
-        background: var(--light-bg-color);
-    }
+.cart-item-name {
+    font-size: 1.2rem;
+    color: #822b2b;
+    margin-left: 1rem;
+}
 
-    .cart-item-price {
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: #822b2b;
-    }
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 50px;
+    background: var(--light-bg-color);
+}
+
+.cart-item-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #822b2b;
+}
 
 .cart-total {
     margin-top: 2rem;
@@ -114,10 +188,10 @@
 
     {#each cartItems as item}
         <div class="cart-item">
-            <img src="https://via.placeholder.com/60" alt={item.name} />
-            <span class="cart-item-name">{item.name}</span>
+            <img src="https://placeholder.co/200" alt={item.product.name} />
+            <span class="cart-item-name">{item.product.name}</span>
             <div class="cart-item-quantity">
-                <select bind:value={item.quantity} on:change={(e) => updateQuantity(item.id, e)}>
+                <select bind:value={item.quantity}>
                     {#each Array(10)
                         .fill(0)
                         .map((_, i) => i + 1) as qty}
@@ -125,12 +199,12 @@
                     {/each}
                 </select>
             </div>
-            <span class="cart-item-price">{item.price * item.quantity} TL</span>
+            <span class="cart-item-price">{productFinalPriceCents(item.product) / 100 * item.quantity} TL</span>
         </div>
     {/each}
 
     <div class="cart-total">
-        Toplam: {calculateTotal()} TL
+        Toplam: {formattedTotal} TL
     </div>
 
     <button class="checkout-button">Ödemeye Geç</button>
