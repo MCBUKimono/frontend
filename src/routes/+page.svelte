@@ -195,13 +195,13 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hafif gölge */
     }
 
-    /* Fiyat filtresi (Başlık üstte, range altta olacak şekilde düzenlenir) */
+
     .filter.price {
         display: flex;
-        flex-direction: column; /* Alt alta hizalama */
-        gap: 0.5rem; /* Elemanlar arasındaki boşluk */
-        background: var(--lighter-bg-color); /* Filtre kutusu arka planı */
-        border-radius: 50px; /* Yumuşak köşeler */
+        flex-direction: column;
+        gap: 0.5rem;
+        background: var(--lighter-bg-color);
+        border-radius: 50px;
         padding: 1rem;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hafif gölge */
         text-align: left; /* Başlığı sola hizalar */
@@ -233,12 +233,12 @@
     /* Checkbox düzeni */
     .filter label {
         display: flex;
-        justify-content: space-between; /* Yazı ve checkbox arasındaki mesafeyi yönetir */
+        justify-content: space-between;
         align-items: center;
         font-size: 1rem;
     }
 
-    /* Checkbox boyutu */
+
     .filter input[type="checkbox"] {
         width: 20px; /* Checkbox boyutu */
         height: 20px; /* Checkbox boyutu */
@@ -308,7 +308,13 @@
         }
 
         .sidebar {
-            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 75%;
+            transform: translateX(-100%);
+            z-index: 9;
         }
     }
 </style>
@@ -325,12 +331,12 @@
             <input type="range" min="500" max="2500" step="50" aria-label="Price filter" />
         </div>
         <div class="filter">
-            <h3>İndirimli</h3>
-            <label><input type="checkbox" /> </label>
+
+            <label>İndirimli<input type="checkbox" /> </label>
         </div>
         <div class="filter">
-            <h3>Almadıklarım</h3>
-            <label><input type="checkbox" /> </label>
+
+            <label>Almadıklarım<input type="checkbox" /> </label>
         </div>
     </aside>
 
@@ -372,9 +378,12 @@
             <button class="pagination-button" aria-label="Sonraki Sayfa">
                 <i class="fa fa-angle-right"></i>
             </button>
+
+
             <button class="pagination-button" aria-label="Sonraki Sayfa">
                 <i class="fa fa-angle-double-right"></i>
             </button>
+
         </div>
     </main>
 </div>
