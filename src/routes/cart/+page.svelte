@@ -186,7 +186,10 @@
                     {/each}
                 </select>
             </div>
-            <span class="item-price">{productFinalPriceCents(item.product) / 100 * item.quantity} TL</span>
+            <span class="item-price">
+                {priceFormat.format(productFinalPriceCents(item.product) / 100 * item.quantity)}
+                TL
+            </span>
         </div>
     {/each}
 
