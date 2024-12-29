@@ -1,6 +1,7 @@
 <script lang="ts">
     import { type Product, productFinalPriceCents } from "$lib/product";
     import { priceFormat } from "$lib/formats";
+    import Title from "$lib/components/Title.svelte";
 
     interface CartItem {
         product: Product;
@@ -101,29 +102,26 @@
 </script>
 
 <style>
-.cart-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.cart {
+    display: grid;
+    grid-auto-flow: row;
     margin: 0.5rem auto;
-    padding: 0.1rem;
     background-color: var(--lighter-bg-color);
     border-radius: 45px;
-    max-width: 600px;
-    max-height: 700px;
+    max-width: 60ch;
 }
 
-.cart-title {
+.title {
     font-size: 1.8rem;
     color: var(--brand-color);
     margin-bottom: 2rem; /* Başlık altındaki boşluk artırıldı */
 }
 
-.cart-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
+.item {
+    display: grid;
+    grid-auto-flow: column;
+    place-items: center;
+    grid-template-columns: auto 5fr 1fr 3fr;
     background-color: var(--light-bg-color);
     border-radius: 10px;
     margin-bottom: 1.5rem;
@@ -131,20 +129,20 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.cart-item img {
+.item img {
     width: 90px;
     height: 90px;
     border-radius: 20%;
     background-color: #ddd;
 }
 
-.cart-item-name {
+.item-name {
     font-size: 1.2rem;
     color: #822b2b;
     margin-left: 1rem;
 }
 
-.cart-item-quantity {
+.item-quantity {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -152,13 +150,13 @@
     background: var(--light-bg-color);
 }
 
-.cart-item-price {
+.item-price {
     font-size: 1.2rem;
     font-weight: bold;
     color: #822b2b;
 }
 
-.cart-total {
+.total {
     margin-top: 2rem;
     font-size: 1.5rem;
     color: #822b2b;
@@ -183,14 +181,14 @@
 
 </style>
 
-<div class="cart-container">
-    <h1 class="cart-title">Sepet</h1>
+<Title title="Sepet"><h1 class="title">Sepet</h1></Title>
 
+<div class="cart">
     {#each cartItems as item}
-        <div class="cart-item">
+        <div class="item">
             <img src="https://placeholder.co/200" alt={item.product.name} />
-            <span class="cart-item-name">{item.product.name}</span>
-            <div class="cart-item-quantity">
+            <span class="item-name">{item.product.name}</span>
+            <div class="item-quantity">
                 <select bind:value={item.quantity}>
                     {#each Array(10)
                         .fill(0)
@@ -199,11 +197,11 @@
                     {/each}
                 </select>
             </div>
-            <span class="cart-item-price">{productFinalPriceCents(item.product) / 100 * item.quantity} TL</span>
+            <span class="item-price">{productFinalPriceCents(item.product) / 100 * item.quantity} TL</span>
         </div>
     {/each}
 
-    <div class="cart-total">
+    <div class="total">
         Toplam: {formattedTotal} TL
     </div>
 
