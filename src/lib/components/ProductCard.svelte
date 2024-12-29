@@ -9,17 +9,17 @@
 
     const ratingFormat = new Intl.NumberFormat("en-US", {
         minimumFractionDigits: 1,
-        maximumFractionDigits: 2,
+        maximumFractionDigits: 2
     });
 
     const priceFormat = new Intl.NumberFormat("en-US", {
         minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-    })
+        maximumFractionDigits: 2
+    });
 
     function formatRatingOutOf(max: number) {
         if (!product) return;
-        const score = product.averageScoreOutOf100 / 100 * max;
+        const score = (product.averageScoreOutOf100 / 100) * max;
         return ratingFormat.format(score);
     }
 
@@ -27,7 +27,6 @@
         if (!product) return;
         return priceFormat.format(productFinalPriceCents(product) / 100) + " ₺";
     }
-
 </script>
 
 <style lang="scss">
@@ -38,9 +37,15 @@
     }
 
     @keyframes sk-color-spin {
-        0% { --product-card-sk-whiteness: 100%; }
-        50% { --product-card-sk-whiteness: 100%; }
-        75% { --product-card-sk-whiteness: 0%; }
+        0% {
+            --product-card-sk-whiteness: 100%;
+        }
+        50% {
+            --product-card-sk-whiteness: 100%;
+        }
+        75% {
+            --product-card-sk-whiteness: 0%;
+        }
     }
 
     .card {
@@ -55,7 +60,8 @@
         border-radius: var(--border-radius);
     }
 
-    img, .image {
+    img,
+    .image {
         display: block;
         width: 100%;
         aspect-ratio: 1 / 1;
@@ -114,7 +120,11 @@
             var(--lighter-bg-color)
         );
 
-        .image, .title, .description, .rating, .price {
+        .image,
+        .title,
+        .description,
+        .rating,
+        .price {
             background: var(--sk-color);
         }
 
@@ -149,7 +159,7 @@
             <p class="price"></p>
         </div>
     {:else}
-        <img src={product.images[0]} alt="fotoğraf">
+        <img src={product.images[0]} alt="fotoğraf" />
         <div class="properties">
             <p class="title">{product.name}</p>
             <p class="rating">{formatRatingOutOf(5)} / 5</p>

@@ -9,24 +9,28 @@
         tags: ["autodocs"],
         argTypes: {
             product: {
-                control: "object",
+                control: "object"
             }
         }
     });
 </script>
 
 <Story name="Skeleton" />
-<Story name="Given" args={{ product: {
-    id: 1,
-    name: "iPhone 16 Pro Max",
-    priceCents: 1600000,
-    images: [
-        "https://placehold.co/200x200",
-    ],
-    description: "<p>Çok iyi telefon. Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam error repellat impedit maiores veniam molestiae qui laudantium? Harum sunt tempore veritatis facere consectetur ea quisquam ipsam. Quam suscipit veritatis placeat?</p>",
-    brand: "Apple",
-    category: "Cep Telefonları",
-    averageScoreOutOf100: 97.0,
-    discountPer1000: 0.0,
-    taxPer1000: 200.0,
-} }} />
+<Story
+    name="Given"
+    args={{
+        product: {
+            id: 1,
+            name: "iPhone 16 Pro Max",
+            priceCents: 1600000,
+            images: ["https://placehold.co/200x200"],
+            description:
+                "<p>Çok iyi telefon. Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam error repellat impedit maiores veniam molestiae qui laudantium? Harum sunt tempore veritatis facere consectetur ea quisquam ipsam. Quam suscipit veritatis placeat?</p>",
+            brand: "Apple",
+            category: "Cep Telefonları",
+            averageScoreOutOf100: 97.0,
+            discountPer1000: 0.0,
+            taxPer1000: 200.0
+        }
+    }}
+/>

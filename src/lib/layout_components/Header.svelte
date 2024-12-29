@@ -96,7 +96,7 @@
             @include balloon(var(--s), 45vw, var(--y), var(--primary-color));
         }
         .balloon-3 {
-            --s: calc(var(--header-height) * 1.0);
+            --s: calc(var(--header-height) * 1);
             @include balloon(var(--s), 70vw, 0px, var(--accent-color));
         }
         .balloon-4 {
@@ -121,6 +121,7 @@
             <HeaderTab href="/search">Search</HeaderTab>
             <HeaderTab href="/favorites">Favorites</HeaderTab>
             <HeaderTab href="/cart" icon><CartIcon /></HeaderTab>
+            <a href="/register">Register</a>
         </div>
     </nav>
 </header>

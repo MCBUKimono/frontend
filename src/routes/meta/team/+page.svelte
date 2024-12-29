@@ -16,7 +16,7 @@
 <ul>
     <li><PersonName given="Oğuz Anıl" last="Ateş" /></li>
     <li><PersonName given="Muhammet Berk" last="Can" /></li>
-    <li><PersonName given="Eren" last="Gökçe"/></li>
+    <li><PersonName given="Eren" last="Gökçe" /></li>
     <li><PersonName given="Emre" last="Özcan" /></li>
     <li><PersonName given="Melisa" last="Uyar" /></li>
 </ul>

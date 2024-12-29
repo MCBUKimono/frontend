@@ -1,12 +1,12 @@
 @mixin colors {
     :root {
         --text-color: hsl(0, 0%, 20%);
-        --theme-color: #F4BAA3;
-        --brand-color: #7A1616;
-        --primary-color: #F19898;
-        --accent-color: #A1E6F8;
-        --light-bg-color: #FFDCCE;
-        --lighter-bg-color: #FFEBEB;
+        --theme-color: #f4baa3;
+        --brand-color: #7a1616;
+        --primary-color: #f19898;
+        --accent-color: #a1e6f8;
+        --light-bg-color: #ffdcce;
+        --lighter-bg-color: #ffebeb;
 
         color-scheme: light;
     }

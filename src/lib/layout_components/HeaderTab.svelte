@@ -40,8 +40,4 @@
     }
 </style>
 
-<a
-    {href}
-    class:selected={isHere()}
-    class:icon={icon}
->{@render children()}</a>
+<a {href} class:selected={isHere()} class:icon>{@render children()}</a>
