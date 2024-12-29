@@ -1,1 +1,1 @@
-export const fonts = ["sans", "brand"];
+export const fonts = ["serif", "brand"];

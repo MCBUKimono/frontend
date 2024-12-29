@@ -28,7 +28,7 @@
             }
         },
         args: {
-            font: "sans",
+            font: "serif",
             text: "Pijamalı hasta yağız şoföre çabucak güvendi.",
             size: 16,
             italic: false
@@ -36,7 +36,7 @@
     });
 </script>
 
-<Story name="Sans" args={{ font: "sans" }} />
-<Story name="Sans Italic" args={{ font: "sans", italic: true }} />
+<Story name="Serif" args={{ font: "serif" }} />
+<Story name="Serif Italic" args={{ font: "serif", italic: true }} />
 <Story name="Brand" args={{ font: "brand" }} />
 <Story name="Brand Italic" args={{ font: "brand", italic: true }} />
