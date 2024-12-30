@@ -1,5 +1,12 @@
-<script>
+<script lang="ts">
+    import type { Product } from "$lib/product";
+
     import ProductCard from "$lib/components/ProductCard.svelte";
+    import SearchIcon from "virtual:icons/material-symbols/search";
+    import DoubleLeftIcon from "virtual:icons/icon-park-outline/double-left";
+    import LeftIcon from "virtual:icons/icon-park-outline/left";
+    import DoubleRightIcon from "virtual:icons/icon-park-outline/double-right";
+    import RightIcon from "virtual:icons/icon-park-outline/right";
 
     const products = [
         {
@@ -74,7 +81,7 @@
             discountPer1000: 0,
             taxPer1000: 200
         }
-    ];
+    ] satisfies Product[];
 </script>
 
 <style>
@@ -195,7 +202,6 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hafif gölge */
     }
 
-
     .filter.price {
         display: flex;
         flex-direction: column;
@@ -237,7 +243,6 @@
         align-items: center;
         font-size: 1rem;
     }
-
 
     .filter input[type="checkbox"] {
         width: 20px; /* Checkbox boyutu */
@@ -331,11 +336,9 @@
             <input type="range" min="500" max="2500" step="50" aria-label="Price filter" />
         </div>
         <div class="filter">
-
             <label>İndirimli<input type="checkbox" /> </label>
         </div>
         <div class="filter">
-
             <label>Almadıklarım<input type="checkbox" /> </label>
         </div>
     </aside>
@@ -354,7 +357,7 @@
             <form class="search-bar" role="search">
                 <input type="text" placeholder="Search Products..." aria-label="Search Bar" />
                 <button type="submit" aria-label="Search">
-                    <i class="fa fa-search" aria-hidden="true"></i>
+                    <SearchIcon />
                 </button>
             </form>
         </div>
@@ -362,28 +365,27 @@
         <!-- Product Grid -->
         <div class="product-grid">
             {#each products as product}
-                <ProductCard {product} />
+                <div class="product-item">
+                    <ProductCard {product} />
+                    <a href={`/product/${product.id}`} class="details-button">Ürün Detayı</a>
+                </div>
             {/each}
         </div>
-
         <!-- Pagination -->
         <div class="pagination">
             <button class="pagination-button" aria-label="Önceki Sayfa">
-                <i class="fa fa-angle-double-left"></i>
+                <DoubleLeftIcon />
             </button>
             <button class="pagination-button" aria-label="Önceki Sayfa">
-                <i class="fa fa-angle-left"></i>
+                <LeftIcon />
             </button>
             <span class="pagination-info">01</span>
             <button class="pagination-button" aria-label="Sonraki Sayfa">
-                <i class="fa fa-angle-right"></i>
+                <RightIcon />
             </button>
-
-
             <button class="pagination-button" aria-label="Sonraki Sayfa">
-                <i class="fa fa-angle-double-right"></i>
+                <DoubleRightIcon />
             </button>
-
         </div>
     </main>
 </div>

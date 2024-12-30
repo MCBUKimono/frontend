@@ -20,8 +20,6 @@
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-
-        font-family: Arial, sans-serif;
     }
 
     .register-form {
@@ -51,81 +49,12 @@
         text-align: center;
         width: 150px; /* Yarım ayın genişliği */
         height: 55px; /* Yarım ayın yüksekliği */
-        line-height: 35px; /* Metni dikey ortalama */
-    }
-
-    .form-group {
-        margin-bottom: 1rem;
-        text-align: left;
-    }
-
-    .form-group label {
-        display: block;
-        font-size: 0.9rem;
-        margin-bottom: 0.5rem;
-        font-weight: bold;
-        color: #8a3a3a;
-    }
-
-    .form-group input {
-        width: 100%;
-        padding: 0.75rem;
-        border: 1px solid #ccc;
-        border-radius: 20px;
-        font-size: 1rem;
-    }
-
-    .form-group input:focus {
-        border-color: #67cddf;
-        outline: none;
-    }
-
-    .register-button {
-        width: 100%;
-        padding: 0.75rem;
-        font-size: 1rem;
-        background-color: #a8e2f1;
-        color: #333;
-        border: none;
-        border-radius: 20px;
-        cursor: pointer;
-        margin-top: 1rem;
-    }
-
-    .register-button:hover {
-        background-color: #82d4e8;
     }
 
     .form-footer {
-        margin-top: 1rem;
         font-size: 0.9rem;
-        color: #333;
     }
 
-    .form-footer a {
-        color: var(--brand-color);
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    .form-footer a:hover {
-        text-decoration: underline;
-    }
-
-    .login-button {
-        margin-top: 0.5rem;
-        background: #82d4e8;
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        border: none;
-        font-size: 1rem;
-        cursor: pointer;
-    }
-
-    .login-button:hover {
-        background: #67cddf;
-    }
 </style>
 
 <div class="register-container">
@@ -148,8 +77,8 @@
         <button type="submit" class="register-button">Kaydol</button>
 
         <div class="form-footer">
-            <p>Hesabın var mı? Giriş yap.</p>
-            <a href="/login" class="login-button">Giriş Yap</a>
+            Hesabın var mı?
+            <a href="/login" class="login-button">Giriş yap.</a>
         </div>
     </form>
 </div>

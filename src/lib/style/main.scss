@@ -29,3 +29,83 @@ for people that prefer not to see them */
 .sb-main-padded.sb-show-main {
     background-color: var(--theme-color);
 }
+
+:is(button, input[type=submit]) {
+    --background-color: var(--accent-color);
+    display: inline-block;
+    padding-inline: 0.75rem;
+    padding-block: 0.45em;
+    font-size: 1rem;
+    background-color: var(--background-color);
+    color: var(--brand-color);
+    border: none;
+    border-radius: 100vmax;
+    cursor: pointer;
+
+    &:hover {
+        --background-color: var(--primary-color);
+        color: white;
+    }
+
+    box-shadow: 0 0.25em color-mix(in oklch, var(--background-color) 50%, transparent);
+    transform: translateY(-0.25em);
+    &:active {
+        box-shadow: none;
+        transform: translateY(0);
+    }
+}
+
+form {
+    display: grid;
+    gap: 1.5rem;
+
+    .form-group {
+        display: grid;
+        gap: 0.25rem;
+    }
+}
+
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--brand-color);
+    text-align: start;
+}
+
+input {
+    --border-color: #ccc;
+    --padding-block: 0.4em;
+    display: inline-block;
+    padding-block: var(--padding-block);
+    padding-inline: 1.25em;
+    border: 1px solid var(--border-color);
+    /*
+        /-----------------------\
+        |  ^ c                  |
+        |  |  [<->] a [<->] I b |
+        |  v              d[<->]|
+        \-----------------------/
+        a = content-width
+        b = line-height
+        c = padding-block
+        d = padding-inline
+
+        For text to lay within a safe area not occluded by the border radius,
+        the selected border radius must not be greater than half the line
+        height plus the block padding.
+
+        The calc() expression below calculates the minimum safe border radius.
+    */
+    border-radius: calc(calc(1lh / 2) + calc(var(--padding-block) / 2));
+
+    font-size: 1rem;
+
+    &:focus {
+        border-color: color-mix(
+            in oklch,
+            var(--border-color) 40%,
+            var(--accent-color)
+        );
+        outline: none;
+    }
+}

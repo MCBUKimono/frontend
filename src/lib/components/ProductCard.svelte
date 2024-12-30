@@ -1,21 +1,12 @@
 <script lang="ts">
     import { type Product, productFinalPriceCents } from "$lib/product";
+    import { priceFormat, ratingFormat } from "$lib/formats";
 
     interface Props {
         product?: Product;
     }
 
     const { product = undefined }: Props = $props();
-
-    const ratingFormat = new Intl.NumberFormat("en-US", {
-        minimumFractionDigits: 1,
-        maximumFractionDigits: 2
-    });
-
-    const priceFormat = new Intl.NumberFormat("en-US", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    });
 
     function formatRatingOutOf(max: number) {
         if (!product) return;

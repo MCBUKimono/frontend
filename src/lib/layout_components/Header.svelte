@@ -117,10 +117,10 @@
     <nav>
         <a href="/" class="brand">Kimono</a>
         <div class="tabs">
-            <HeaderTab href="/">Home</HeaderTab>
-            <HeaderTab href="/search">Search</HeaderTab>
+            <HeaderTab href="/">Search</HeaderTab>
             <HeaderTab href="/favorites">Favorites</HeaderTab>
             <HeaderTab href="/cart" icon><CartIcon /></HeaderTab>
+            <a href="/login">Login</a>
             <a href="/register">Register</a>
         </div>
     </nav>

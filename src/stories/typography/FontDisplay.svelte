@@ -9,7 +9,7 @@
 
 <script lang="ts">
     const {
-        font = "sans",
+        font = "serif",
         text = "Pijamalı hasta yağız şoföre çabucak güvendi.",
         size = 16,
         italic = false

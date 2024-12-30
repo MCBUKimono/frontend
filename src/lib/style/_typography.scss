@@ -1,11 +1,11 @@
 @mixin typography {
     :root {
-        --sans-family: "Kadwa", sans-serif;
+        --serif-family: "Kadwa", serif;
         --brand-family: "Inknut Antiqua", sans-serif;
     }
 
     html {
-        font-family: var(--sans-family);
+        font-family: var(--serif-family);
         line-height: 1.6;
     }
 
@@ -13,7 +13,7 @@
         font-family: inherit;
     }
 
-    @each $font in ("sans", "brand") {
+    @each $font in ("serif", "brand") {
         .#{$font} {
             font-family: var(--#{$font}-family);
         }

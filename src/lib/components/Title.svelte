@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-    <title>{title}</title>
+    <title>Kimono | {title}</title>
 </svelte:head>
 
 {#snippet tag_content()}
