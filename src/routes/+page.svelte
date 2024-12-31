@@ -202,7 +202,6 @@
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hafif gölge */
     }
 
-
     .filter.price {
         display: flex;
         flex-direction: column;
@@ -244,7 +243,6 @@
         align-items: center;
         font-size: 1rem;
     }
-
 
     .filter input[type="checkbox"] {
         width: 20px; /* Checkbox boyutu */
@@ -338,11 +336,9 @@
             <input type="range" min="500" max="2500" step="50" aria-label="Price filter" />
         </div>
         <div class="filter">
-
             <label>İndirimli<input type="checkbox" /> </label>
         </div>
         <div class="filter">
-
             <label>Almadıklarım<input type="checkbox" /> </label>
         </div>
     </aside>
@@ -369,10 +365,12 @@
         <!-- Product Grid -->
         <div class="product-grid">
             {#each products as product}
-                <ProductCard {product} />
+                <div class="product-item">
+                    <ProductCard {product} />
+                    <a href={`/product/${product.id}`} class="details-button">Ürün Detayı</a>
+                </div>
             {/each}
         </div>
-
         <!-- Pagination -->
         <div class="pagination">
             <button class="pagination-button" aria-label="Önceki Sayfa">
